@@ -1,7 +1,7 @@
 Dynamic Access Control for Yii2
 ============================================
 
-##### НА РУССКОМ [ТУТ](https://github.com/developeruz/yii2-db-rbac/blob/master/README.RU.md)
+##### НА РУССКОМ [ТУТ](https://github.com/dastanaron/yii2-db-rbac/blob/master/README.RU.md)
 
 The easiest way to create access control in Yii2 without changes in the code.
 
@@ -236,6 +236,20 @@ and all others should be accessible for all, please set up `protect` parameter
 In this example, the behavior will check the user's permission to access the page only for paths beginning 
 with `admin`,` user` and `site / about`. All other routes are available for all (not verified by the behavior). 
 As you can see in the example, the parameter `protect` can be combined with `rules`.
+
+##Select2 Inputs Config
+To use rights with assigning them to roles, you must create a config file permits.yaml. 
+Permit, the controller accesses it along the path ../config/permits.yaml. 
+There should be content in the form of a system right and its description for a convenient choice
+
+Approximate content of the file:
+
+```yaml
+user/index: 'Access to viewing of all users'
+user/update: 'Access to user editing'
+user/delete: 'Access to user removal'
+user/create: 'Access to user creation'
+```
 
 Contributing
 ============
