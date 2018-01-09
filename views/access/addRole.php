@@ -4,6 +4,7 @@ namespace developeruz\db_rbac\views\access;
 use Yii;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Links */
@@ -45,7 +46,15 @@ $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Новая роль');
 
         <div class="form-group">
             <?= Html::label(Yii::t('db_rbac', 'Разрешенные доступы')); ?>
-            <?= Html::checkboxList('permissions', null, $permissions, ['separator' => '<br>']); ?>
+            <?=Select2::widget([
+                'name' => 'permissions',
+                'data' => $permissions,
+                'value' => null,
+                'options' => [
+                    'multiple' => true,
+                    'placeholder' => 'Выберите доступ(ы)',
+                ]
+            ]);?>
         </div>
 
         <div class="form-group">

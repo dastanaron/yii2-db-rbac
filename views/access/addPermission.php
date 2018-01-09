@@ -3,7 +3,10 @@ namespace developeruz\db_rbac\views\access;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\VarDumper;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Links */
@@ -40,6 +43,14 @@ $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Новое правило');
         <div class="form-group">
             <?= Html::label(Yii::t('db_rbac', 'Разрешенный доступ')); ?>
             <?= Html::textInput('name'); ?>
+            <?=Select2::widget([
+                'name' => 'name',
+                'data' => $permissions,
+                'value' => null,
+                'options' => [
+                    'placeholder' => 'Выберите доступ(ы)',
+                ]
+            ]);?>
             <?=Yii::t('db_rbac', '<br>* Формат: <strong>module/controller/action</strong><br><strong>site/article</strong> - доступ к странице "site/article"<br><strong>site</strong> - доступ к любым action контроллера "site"');?>
         </div>
 

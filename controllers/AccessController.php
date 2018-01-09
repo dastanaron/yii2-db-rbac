@@ -10,6 +10,7 @@
 namespace developeruz\db_rbac\controllers;
 
 use Yii;
+use yii\base\ErrorException;
 use yii\web\Controller;
 use yii\web\BadRequestHttpException;
 use yii\rbac\Role;
@@ -17,6 +18,7 @@ use yii\rbac\Permission;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\validators\RegularExpressionValidator;
+use Symfony\Component\Yaml\Yaml;
 
 class AccessController extends Controller
 {
@@ -144,7 +146,15 @@ class AccessController extends Controller
 
     public function actionAddPermission()
     {
+        if(file_exists('../config/permits.yaml')) {
+            $permissions = Yaml::parseFile('../config/permits.yaml');
+        }
+        else {
+            throw new \Codeception\Exception('create a config file format .yaml in the folder config');
+        }
+
         $permission = $this->clear(Yii::$app->request->post('name'));
+
         if ($permission
             && $this->validate($permission, $this->pattern4Permission)
             && $this->isUnique($permission, 'permission')
@@ -154,11 +164,12 @@ class AccessController extends Controller
             Yii::$app->authManager->add($permit);
             return $this->redirect(Url::toRoute([
                 'update-permission',
-                'name' => $permit->name
+                'name' => $permit->name,
+                'permissions' => $permissions,
             ]));
         }
 
-        return $this->render('addPermission', ['error' => $this->error]);
+        return $this->render('addPermission', ['error' => $this->error, 'permissions' => $permissions,]);
     }
 
     public function actionUpdatePermission($name)
