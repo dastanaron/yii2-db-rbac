@@ -1,5 +1,5 @@
 {
-    "name": "developeruz/yii2-db-rbac",
+    "name": "dastanaron/yii2-db-rbac",
     "description": "Dynamic control of access rights in YII2",
     "keywords": ["yii", "rbac"],
     "type": "yii2-extension",
@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "kartik-v/yii2-widget-select2": "^2.1",
     },
     "support": {
         "issues": "https://github.com/developeruz/yii2-db-rbac/issues"
