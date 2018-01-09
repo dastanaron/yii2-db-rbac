@@ -165,7 +165,6 @@ class AccessController extends Controller
             return $this->redirect(Url::toRoute([
                 'update-permission',
                 'name' => $permit->name,
-                'permissions' => $permissions,
             ]));
         }
 
@@ -174,6 +173,14 @@ class AccessController extends Controller
 
     public function actionUpdatePermission($name)
     {
+
+        if(file_exists('../config/permits.yaml')) {
+            $permissions = Yaml::parseFile('../config/permits.yaml');
+        }
+        else {
+            throw new \Codeception\Exception('create a config file format .yaml in the folder config');
+        }
+
         $permit = Yii::$app->authManager->getPermission($name);
         if ($permit instanceof Permission) {
             $permission = $this->clear(Yii::$app->request->post('name'));
@@ -182,7 +189,8 @@ class AccessController extends Controller
                 if ($permission != $name && !$this->isUnique($permission)) {
                     return $this->render('updatePermission', [
                         'permit' => $permit,
-                        'error' => $this->error
+                        'error' => $this->error,
+                        'permissions' => $permissions,
                     ]);
                 }
 
@@ -191,13 +199,14 @@ class AccessController extends Controller
                 Yii::$app->authManager->update($name, $permit);
                 return $this->redirect(Url::toRoute([
                     'update-permission',
-                    'name' => $permit->name
+                    'name' => $permit->name,
                 ]));
             }
 
             return $this->render('updatePermission', [
                 'permit' => $permit,
-                'error' => $this->error
+                'error' => $this->error,
+                'permissions' => $permissions,
             ]);
         } else {
             throw new BadRequestHttpException(Yii::t('db_rbac', 'Страница не найдена'));

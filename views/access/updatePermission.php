@@ -4,6 +4,7 @@ namespace developeruz\db_rbac\views\access;
 use Yii;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Links */
@@ -42,6 +43,18 @@ $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Редактирование
         <div class="form-group">
             <?= Html::label(Yii::t('db_rbac', 'Разрешенный доступ')); ?>
             <?= Html::textInput('name', $permit->name); ?>
+        </div>
+
+        <div class="form-group">
+            <?= Html::label(Yii::t('db_rbac', 'Или выберите из имеющихся')); ?>
+            <?=Select2::widget([
+                'name' => 'name',
+                'data' => $permissions,
+                'value' => $permit->name,
+                'options' => [
+                    'placeholder' => 'Выберите доступ(ы)',
+                ]
+            ]);?>
         </div>
 
         <div class="form-group">

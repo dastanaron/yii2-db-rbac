@@ -43,6 +43,11 @@ $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Новое правило');
         <div class="form-group">
             <?= Html::label(Yii::t('db_rbac', 'Разрешенный доступ')); ?>
             <?= Html::textInput('name'); ?>
+
+            <?=Yii::t('db_rbac', '<br>* Формат: <strong>module/controller/action</strong><br><strong>site/article</strong> - доступ к странице "site/article"<br><strong>site</strong> - доступ к любым action контроллера "site"');?>
+        </div>
+        <div class="form-group">
+            <?= Html::label(Yii::t('db_rbac', 'Или выберите из имеющихся')); ?>
             <?=Select2::widget([
                 'name' => 'name',
                 'data' => $permissions,
@@ -51,8 +56,8 @@ $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Новое правило');
                     'placeholder' => 'Выберите доступ(ы)',
                 ]
             ]);?>
-            <?=Yii::t('db_rbac', '<br>* Формат: <strong>module/controller/action</strong><br><strong>site/article</strong> - доступ к странице "site/article"<br><strong>site</strong> - доступ к любым action контроллера "site"');?>
         </div>
+
 
         <div class="form-group">
             <?= Html::submitButton(Yii::t('db_rbac', 'Сохранить'), ['class' => 'btn btn-success']) ?>

@@ -12,6 +12,7 @@ return [
     'Правила доступа' => 'Permissions',
     'Текстовое описание' => 'Description',
     'Разрешенный доступ' => 'Allowed Access',
+    'Или выберите из имеющихся' => 'Or choose from the available',
     '<br>* Формат: <strong>module/controller/action</strong><br><strong>site/article</strong> - доступ к странице "site/article"<br><strong>site</strong> - доступ к любым action контроллера "site"' =>
         '<br>* Format: <strong>module/controller/action</strong><br><strong>site/article</strong> - access to page "site/article"<br><strong>site</strong> - access to any action in "site" controller',
     'Сохранить' => 'Save',
