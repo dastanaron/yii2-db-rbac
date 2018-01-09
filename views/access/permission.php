@@ -9,6 +9,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->title = Yii::t('db_rbac', 'Правила доступа');
+$this->params['breadcrumbs'][] = ['label' => 'Управление пользователями', 'url' => ['/user']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">

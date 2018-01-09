@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title = Yii::t('db_rbac', 'Редактирование правила: ') . ' ' . $permit->description;
+$this->params['breadcrumbs'][] = ['label' => 'Управление пользователями', 'url' => ['/user']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('db_rbac', 'Правила доступа'), 'url' => ['permission']];
 $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Редактирование правила');
 ?>

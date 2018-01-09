@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\Links */
 /* @var $form yii\widgets\ActiveForm */
 $this->title = Yii::t('db_rbac', 'Новое правило');
+$this->params['breadcrumbs'][] = ['label' => 'Управление пользователями', 'url' => ['/user']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('db_rbac', 'Правила доступа'), 'url' => ['permission']];
 $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Новое правило');
 ?>

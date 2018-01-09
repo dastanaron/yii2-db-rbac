@@ -10,6 +10,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('db_rbac', 'Управление ролями');
+$this->params['breadcrumbs'][] = ['label' => 'Управление пользователями', 'url' => ['/user']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">

@@ -6,6 +6,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('db_rbac', 'Редактирование роли: ') . ' ' . $role->name;
+$this->params['breadcrumbs'][] = ['label' => 'Управление пользователями', 'url' => ['/user']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('db_rbac', 'Управление ролями'), 'url' => ['role']];
 $this->params['breadcrumbs'][] = Yii::t('db_rbac', 'Редактирование');
 ?>
