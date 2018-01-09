@@ -238,8 +238,9 @@ with `admin`,` user` and `site / about`. All other routes are available for all 
 As you can see in the example, the parameter `protect` can be combined with `rules`.
 
 ## Select2 Inputs Config
-To use rights with assigning them to roles, you must create a config file permits.yaml. 
-Permit, the controller accesses it along the path ../config/permits.yaml. 
+To use rights with assigning them to roles, you must create a config file permits.yaml.
+If the file does not exist, it will be created automatically, but with empty content.
+Permit, the controller accesses it along the path @app/config/permits.yaml. 
 There should be content in the form of a system right and its description for a convenient choice
 
 Approximate content of the file:

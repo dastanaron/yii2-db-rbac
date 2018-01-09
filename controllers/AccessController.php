@@ -146,12 +146,7 @@ class AccessController extends Controller
 
     public function actionAddPermission()
     {
-        if(file_exists('../config/permits.yaml')) {
-            $permissions = Yaml::parseFile('../config/permits.yaml');
-        }
-        else {
-            throw new \Codeception\Exception('create a config file format .yaml in the folder config');
-        }
+        $permissions = $this->getPermissions();
 
         $permission = $this->clear(Yii::$app->request->post('name'));
 
@@ -174,12 +169,7 @@ class AccessController extends Controller
     public function actionUpdatePermission($name)
     {
 
-        if(file_exists('../config/permits.yaml')) {
-            $permissions = Yaml::parseFile('../config/permits.yaml');
-        }
-        else {
-            throw new \Codeception\Exception('create a config file format .yaml in the folder config');
-        }
+        $permissions = $this->getPermissions();
 
         $permit = Yii::$app->authManager->getPermission($name);
         if ($permit instanceof Permission) {
@@ -275,6 +265,19 @@ class AccessController extends Controller
             return false;
         }
         return true;
+    }
+
+    protected function getPermissions()
+    {
+        if(file_exists(Yii::getAlias('@app/config/permits.yaml'))) {
+            $permissions = Yaml::parseFile(Yii::getAlias('@app/config/permits.yaml'));
+        }
+        else {
+            file_put_contents(Yii::getAlias('@app/config/permits.yaml'), "controller/action: 'Rule name'");
+            $permissions = Yaml::parseFile(Yii::getAlias('@app/config/permits.yaml'));
+        }
+
+        return $permissions;
     }
 
     protected function clear($value)
