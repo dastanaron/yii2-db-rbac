@@ -176,7 +176,7 @@ use developeruz\db_rbac\behaviors\AccessBehavior;
         'login_url' => Yii::$app->user->loginUrl
     ]
 ```
-##Select2 конфиг
+## Select2 конфиг
 Для использования прав с присвоением их для ролей, вы должны создать конфиг файл permits.yaml, контроллер обращается к нему по пути ../config/permits.yaml. 
 Там должно быть содержание в виде системного права и его описания для удобного выбора
 

@@ -237,7 +237,7 @@ In this example, the behavior will check the user's permission to access the pag
 with `admin`,` user` and `site / about`. All other routes are available for all (not verified by the behavior). 
 As you can see in the example, the parameter `protect` can be combined with `rules`.
 
-##Select2 Inputs Config
+## Select2 Inputs Config
 To use rights with assigning them to roles, you must create a config file permits.yaml. 
 Permit, the controller accesses it along the path ../config/permits.yaml. 
 There should be content in the form of a system right and its description for a convenient choice
