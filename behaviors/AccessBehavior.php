@@ -128,13 +128,8 @@ class AccessBehavior extends AttributeBehavior
     protected function createPartRoutes($route)
     {
         //$route[0] - is the route, $route[1] - is the associated parameters
-
-        //If the path at the beginning contains a slash, then a redirect to it to cut off the slash
-        if(preg_match('#^[/](.*)#', $route[0], $match)) {
-            Yii::$app->response->redirect($match[0])->send();
-        }
-
-        $routePathTmp = explode('/', $route[0]);
+        
+        $routePathTmp = explode('/', trim($route[0], '/'));
         $result = [];
         $routeVariant = array_shift($routePathTmp);
         $result[] = $routeVariant;
